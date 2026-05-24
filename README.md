@@ -2,6 +2,10 @@
 
 A football league simulation REST API built with Go. Simulates a 4-team league with match scheduling, results, standings, and championship predictions.
 
+## Live Demo
+
+https://league-simulation-case-study.onrender.com
+
 ## Tech Stack
 
 - **Go** — core language
