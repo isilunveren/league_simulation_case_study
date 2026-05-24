@@ -2,10 +2,6 @@
 
 A football league simulation REST API built with Go. Simulates a 4-team league with match scheduling, results, standings, and championship predictions.
 
-## Live Demo
-
-https://league-simulation-case-study.onrender.com
-
 ## Tech Stack
 
 - **Go** — core language
@@ -25,14 +21,30 @@ internal/
 migrations/     → SQL schema
 ```
 
-## Setup
+---
+
+## Quick Start (Live Demo)
+
+The API is deployed and ready to use. No setup required.
+
+**Base URL:** `https://league-simulation-case-study.onrender.com`
+
+Test it directly in Postman:
+
+```
+GET https://league-simulation-case-study.onrender.com/league/table
+```
+
+---
+
+## Local Setup
 
 ### Prerequisites
 
-- Go 1.22+
-- PostgreSQL
+- [Go 1.22+](https://go.dev/dl/)
+- [PostgreSQL](https://www.postgresql.org/download/)
 
-### Installation
+### Steps
 
 **1. Clone the repo**
 
@@ -43,10 +55,15 @@ cd league_simulation_case_study
 
 **2. Create database and user**
 
+```bash
+psql postgres
+```
+
 ```sql
 CREATE DATABASE league_simulation;
 CREATE USER league_user WITH PASSWORD 'league_pass';
 GRANT ALL PRIVILEGES ON DATABASE league_simulation TO league_user;
+\q
 ```
 
 **3. Run migrations**
@@ -61,7 +78,23 @@ psql -U league_user -d league_simulation -f migrations/schema.sql
 cp .env.example .env
 ```
 
-**5. Run**
+`.env` file:
+
+```
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=league_user
+DB_PASSWORD=league_pass
+DB_NAME=league_simulation
+```
+
+**5. Install dependencies**
+
+```bash
+go mod tidy
+```
+
+**6. Run**
 
 ```bash
 go run cmd/main.go
